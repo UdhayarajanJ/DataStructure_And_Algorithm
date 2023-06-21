@@ -24,10 +24,10 @@ namespace DataStructure_And_Algorithm.Datastructure
         {
             if (isFull())
             {
-                Console.WriteLine("\n Stack is full not available space.");
+                Console.WriteLine("\nStack is full not available space.");
                 return;
             }
-            Console.WriteLine("\n Inserted element : {0}", element);
+            Console.WriteLine("\nInserted element : {0}", element);
             stackArr[++top] = element;
         }
 
@@ -35,11 +35,21 @@ namespace DataStructure_And_Algorithm.Datastructure
         {
             if (isEmpty())
             {
-                Console.WriteLine("\n Stack is empty. Not able to remove the item.");
+                Console.WriteLine("\nStack is empty. Not able to remove the item.");
                 return;
             }
-            Console.WriteLine("\n Removed element : {0}", stackArr[top]);
+            Console.WriteLine("\nRemoved element : {0}", stackArr[top]);
             --top;
+        }
+
+        public void peek()
+        {
+            if (isEmpty())
+            {
+                Console.WriteLine("\nStack is empty. Not available any item.");
+                return;
+            }
+            Console.WriteLine("\nPeek element : {0}", stackArr[top]);
         }
 
         public void printStackElement()

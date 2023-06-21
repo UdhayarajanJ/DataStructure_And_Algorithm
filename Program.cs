@@ -57,7 +57,8 @@ namespace DataStructure_And_Algorithm
                     {
                         Console.WriteLine("\n1.Push");
                         Console.WriteLine("2.Pop");
-                        Console.WriteLine("3.Print Stack Element");
+                        Console.WriteLine("3.Peek");
+                        Console.WriteLine("4.Print Stack Element");
                         optionsSubMenu = chooseOption();
                         switch (optionsSubMenu)
                         {
@@ -70,6 +71,9 @@ namespace DataStructure_And_Algorithm
                                 stack.pop();
                                 break;
                             case 3:
+                                stack.peek();
+                                break;
+                            case 4:
                                 stack.printStackElement();
                                 break;
                             default:
