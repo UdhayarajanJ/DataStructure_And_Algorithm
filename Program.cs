@@ -24,6 +24,7 @@ namespace DataStructure_And_Algorithm
 
             Console.WriteLine("DataStructures.\n");
             Console.WriteLine("1.Stack");
+            Console.WriteLine("2.Queue");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -75,6 +76,42 @@ namespace DataStructure_And_Algorithm
                                 break;
                             case 4:
                                 stack.printStackElement();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option.");
+                                break;
+                        }
+                        subMenuChoice = toYouWantContinueMenu(2);
+                    } while (subMenuChoice == 2);
+                    break;
+
+                //Queue Operation
+                case 2:
+                    Console.Write("\nEnter the size of the Queue :");
+                    int sizeOftheQueue = numberInputValidate(Console.ReadLine());
+                    Queues queues= new Queues(sizeOftheQueue);
+                    do
+                    {
+                        Console.WriteLine("\n1.Enqueue");
+                        Console.WriteLine("2.Dequeue");
+                        Console.WriteLine("3.Peek");
+                        Console.WriteLine("4.Print Queue Element");
+                        optionsSubMenu = chooseOption();
+                        switch (optionsSubMenu)
+                        {
+                            case 1:
+                                Console.Write("\nEnter the element :");
+                                int element = numberInputValidate(Console.ReadLine());
+                                queues.enqueue(element);
+                                break;
+                            case 2:
+                                queues.dequeue();
+                                break;
+                            case 3:
+                                queues.peek();
+                                break;
+                            case 4:
+                                queues.printQueueItem();
                                 break;
                             default:
                                 Console.WriteLine("Invalid Option.");
