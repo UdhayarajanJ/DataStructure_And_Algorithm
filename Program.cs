@@ -25,6 +25,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("DataStructures.\n");
             Console.WriteLine("1.Stack");
             Console.WriteLine("2.Queue");
+            Console.WriteLine("3.Circular Queue");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -112,6 +113,46 @@ namespace DataStructure_And_Algorithm
                                 break;
                             case 4:
                                 queues.printQueueItem();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option.");
+                                break;
+                        }
+                        subMenuChoice = toYouWantContinueMenu(2);
+                    } while (subMenuChoice == 2);
+                    break;
+
+                //Circular Queue Operation
+                case 3:
+                    Console.Write("\nEnter the size of the Circular queue :");
+                    int sizeOftheCircularQueue = numberInputValidate(Console.ReadLine());
+                    CircularQueue circularQueue = new CircularQueue(sizeOftheCircularQueue);
+                    do
+                    {
+                        Console.WriteLine("\n1.Enqueue");
+                        Console.WriteLine("2.Dequeue");
+                        Console.WriteLine("3.Front Element");
+                        Console.WriteLine("4.Rear Element");
+                        Console.WriteLine("5.Print Circular Queue Element");
+                        optionsSubMenu = chooseOption();
+                        switch (optionsSubMenu)
+                        {
+                            case 1:
+                                Console.Write("\nEnter the element :");
+                                int element = numberInputValidate(Console.ReadLine());
+                                circularQueue.enqueue(element);
+                                break;
+                            case 2:
+                                circularQueue.dequeue();
+                                break;
+                            case 3:
+                                circularQueue.frontElement();
+                                break;
+                            case 4:
+                                circularQueue.rearElement();
+                                break;
+                            case 5:
+                                circularQueue.printQueueItem();
                                 break;
                             default:
                                 Console.WriteLine("Invalid Option.");
