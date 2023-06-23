@@ -26,6 +26,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("1.Stack");
             Console.WriteLine("2.Queue");
             Console.WriteLine("3.Circular Queue");
+            Console.WriteLine("4.Priority Queue");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -159,6 +160,40 @@ namespace DataStructure_And_Algorithm
                                 break;
                         }
                         subMenuChoice = toYouWantContinueMenu(2);
+                    } while (subMenuChoice == 2);
+                    break;
+
+
+
+                //Priority Queue Operation
+                case 4:
+                    PriorityQueue priorityQueue = new PriorityQueue();
+                    do
+                    {
+                        Console.WriteLine("\n1.Enqueue");
+                        Console.WriteLine("2.Dequeue");
+                        Console.WriteLine("3.Print Priority Queue Element");
+                        optionsSubMenu = chooseOption();
+                        switch (optionsSubMenu)
+                        {
+                            case 1:
+                                Console.Write("\nEnter the element :");
+                                int enQueueElement = numberInputValidate(Console.ReadLine());
+                                priorityQueue.enqueue(enQueueElement);
+                                break;
+                            case 2:
+                                Console.Write("\nEnter the element :");
+                                int deQueueElement = numberInputValidate(Console.ReadLine());
+                                priorityQueue.dequeue(deQueueElement);
+                                break;
+                            case 3:
+                                priorityQueue.printPriorityQueue();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option.");
+                                break;
+                        }
+                            subMenuChoice = toYouWantContinueMenu(2);
                     } while (subMenuChoice == 2);
                     break;
 
