@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataStructure_And_Algorithm.Datastructure
 {
-    class Dequeue
+    public class Dequeue
     {
+
     }
 }
