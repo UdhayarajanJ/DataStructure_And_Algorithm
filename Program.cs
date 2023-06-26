@@ -27,6 +27,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("2.Queue");
             Console.WriteLine("3.Circular Queue");
             Console.WriteLine("4.Priority Queue");
+            Console.WriteLine("5.Deque Queue");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -91,7 +92,7 @@ namespace DataStructure_And_Algorithm
                 case 2:
                     Console.Write("\nEnter the size of the Queue :");
                     int sizeOftheQueue = numberInputValidate(Console.ReadLine());
-                    Queues queues= new Queues(sizeOftheQueue);
+                    Queues queues = new Queues(sizeOftheQueue);
                     do
                     {
                         Console.WriteLine("\n1.Enqueue");
@@ -167,6 +168,7 @@ namespace DataStructure_And_Algorithm
 
                 //Priority Queue Operation
                 case 4:
+
                     PriorityQueue priorityQueue = new PriorityQueue();
                     do
                     {
@@ -193,7 +195,54 @@ namespace DataStructure_And_Algorithm
                                 Console.WriteLine("Invalid Option.");
                                 break;
                         }
-                            subMenuChoice = toYouWantContinueMenu(2);
+                        subMenuChoice = toYouWantContinueMenu(2);
+                    } while (subMenuChoice == 2);
+                    break;
+
+
+                //Dequeue Queue Operation
+                case 5:
+                    Console.Write("\nEnter the size of the Double ended queue :");
+                    int sizeOftheDeQueue = numberInputValidate(Console.ReadLine());
+                    Dequeue dequeue = new Dequeue(sizeOftheDeQueue);
+                    do
+                    {
+                        Console.WriteLine("\n1.Insert Front");
+                        Console.WriteLine("2.Insert Rear");
+                        Console.WriteLine("3.Delete Front");
+                        Console.WriteLine("4.Delete Rear");
+                        Console.WriteLine("5.Get Front");
+                        Console.WriteLine("6.Get Rear");    
+                        optionsSubMenu = chooseOption();
+                        switch (optionsSubMenu)
+                        {
+                            case 1:
+                                Console.Write("\nEnter the element :");
+                                int enQueueElement = numberInputValidate(Console.ReadLine());
+                                dequeue.InsertFront(enQueueElement);
+                                break;
+                            case 2:
+                                Console.Write("\nEnter the element :");
+                                int deQueueElement = numberInputValidate(Console.ReadLine());
+                                dequeue.InsertRear(deQueueElement);
+                                break;
+                            case 3:
+                                dequeue.DeleteFront();
+                                break;
+                            case 4:
+                                dequeue.DeleteRear();
+                                break;
+                            case 5:
+                                dequeue.GetFront();
+                                break;
+                            case 6:
+                                dequeue.GetRear();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option.");
+                                break;
+                        }
+                        subMenuChoice = toYouWantContinueMenu(2);
                     } while (subMenuChoice == 2);
                     break;
 
