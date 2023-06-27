@@ -28,6 +28,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("3.Circular Queue");
             Console.WriteLine("4.Priority Queue");
             Console.WriteLine("5.Deque Queue");
+            Console.WriteLine("6.Linked List");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -246,6 +247,12 @@ namespace DataStructure_And_Algorithm
                     } while (subMenuChoice == 2);
                     break;
 
+
+                //Linked List
+                case 6:
+                    LinkedList linkedList = new LinkedList();
+                    linkedList.Add3Nodes();
+                    break;
 
 
                 default:
