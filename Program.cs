@@ -29,6 +29,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("4.Priority Queue");
             Console.WriteLine("5.Deque Queue");
             Console.WriteLine("6.Linked List");
+            Console.WriteLine("7.Linked List Operations");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -254,6 +255,70 @@ namespace DataStructure_And_Algorithm
                     linkedList.Add3Nodes();
                     break;
 
+
+                //Linked List Operation
+                case 7:
+
+                    LinkedListOperations linkedListOperations = new LinkedListOperations();
+                    do
+                    {
+                        Console.WriteLine("\n1.Insert Beginning");
+                        Console.WriteLine("2.Insert Position");
+                        Console.WriteLine("3.Insert End");
+                        Console.WriteLine("4.Delete Beginning");
+                        Console.WriteLine("5.Delete Position");
+                        Console.WriteLine("6.Delete End");
+                        Console.WriteLine("7.Traverse Linked List");
+                        Console.WriteLine("8.Reverse Traverse Linked List");
+                        Console.WriteLine("9.Sorted Linked List");
+                        optionsSubMenu = chooseOption();
+                        int elementData = 0;
+                        switch (optionsSubMenu)
+                        {
+                            case 1:
+                                Console.Write("\nEnter the data :");
+                                elementData = numberInputValidate(Console.ReadLine());
+                                linkedListOperations.InsertBeginning(elementData);
+                                break;
+                            case 2:
+                                Console.Write("\nEnter the data :");
+                                elementData = numberInputValidate(Console.ReadLine());
+                                Console.Write("\nEnter the position :");
+                                int position = numberInputValidate(Console.ReadLine());
+                                linkedListOperations.InsertAtPosition(elementData,position);
+                                break;
+                            case 3:
+                                Console.Write("\nEnter the data :");
+                                elementData = numberInputValidate(Console.ReadLine());
+                                linkedListOperations.InsertEnd(elementData);
+                                break;
+                            case 4:
+                                linkedListOperations.DeleteBeginning();
+                                break;
+                            case 5:
+                                Console.Write("\nEnter the position :");
+                                int positionDelete = numberInputValidate(Console.ReadLine());
+                                linkedListOperations.DeletePosition(positionDelete);
+                                break;
+                            case 6:
+                                linkedListOperations.DeleteEnd();
+                                break;
+                            case 7:  
+                                linkedListOperations.PrintLinkedList();
+                                break;
+                            case 8:
+                                linkedListOperations.PrintLinkedListReverse();
+                                break;
+                            case 9:
+                                linkedListOperations.SortedLinkedList();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option.");
+                                break;
+                        }
+                        subMenuChoice = toYouWantContinueMenu(2);
+                    } while (subMenuChoice == 2);
+                    break;
 
                 default:
                     Console.WriteLine("Invalid Option.");
