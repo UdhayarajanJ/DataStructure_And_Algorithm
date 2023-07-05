@@ -32,6 +32,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("7.Linked List Operations");
             Console.WriteLine("8.Double Linked List");
             Console.WriteLine("9.Double Linked List Operations");
+            Console.WriteLine("10.Circular Linked List");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -388,6 +389,11 @@ namespace DataStructure_And_Algorithm
                         }
                         subMenuChoice = toYouWantContinueMenu(2);
                     } while (subMenuChoice == 2);
+                    break;
+                //Circular Linked List
+                case 10:
+                    CircularLinkedList circularLinkedList = new CircularLinkedList();
+                    circularLinkedList.Add3Nodes();
                     break;
                 default:
                     Console.WriteLine("Invalid Option.");
