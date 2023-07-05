@@ -30,6 +30,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("5.Deque Queue");
             Console.WriteLine("6.Linked List");
             Console.WriteLine("7.Linked List Operations");
+            Console.WriteLine("8.Double Linked List");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -214,7 +215,7 @@ namespace DataStructure_And_Algorithm
                         Console.WriteLine("3.Delete Front");
                         Console.WriteLine("4.Delete Rear");
                         Console.WriteLine("5.Get Front");
-                        Console.WriteLine("6.Get Rear");    
+                        Console.WriteLine("6.Get Rear");
                         optionsSubMenu = chooseOption();
                         switch (optionsSubMenu)
                         {
@@ -285,7 +286,7 @@ namespace DataStructure_And_Algorithm
                                 elementData = numberInputValidate(Console.ReadLine());
                                 Console.Write("\nEnter the position :");
                                 int position = numberInputValidate(Console.ReadLine());
-                                linkedListOperations.InsertAtPosition(elementData,position);
+                                linkedListOperations.InsertAtPosition(elementData, position);
                                 break;
                             case 3:
                                 Console.Write("\nEnter the data :");
@@ -303,7 +304,7 @@ namespace DataStructure_And_Algorithm
                             case 6:
                                 linkedListOperations.DeleteEnd();
                                 break;
-                            case 7:  
+                            case 7:
                                 linkedListOperations.PrintLinkedList();
                                 break;
                             case 8:
@@ -319,7 +320,11 @@ namespace DataStructure_And_Algorithm
                         subMenuChoice = toYouWantContinueMenu(2);
                     } while (subMenuChoice == 2);
                     break;
-
+                //Linked List
+                case 8:
+                    DoublelyLinkedList doublelyLinkedList = new DoublelyLinkedList();
+                    doublelyLinkedList.Add3Nodes();
+                    break;
                 default:
                     Console.WriteLine("Invalid Option.");
                     break;
