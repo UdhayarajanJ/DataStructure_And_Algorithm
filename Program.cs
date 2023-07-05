@@ -31,6 +31,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("6.Linked List");
             Console.WriteLine("7.Linked List Operations");
             Console.WriteLine("8.Double Linked List");
+            Console.WriteLine("9.Double Linked List Operations");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -320,10 +321,73 @@ namespace DataStructure_And_Algorithm
                         subMenuChoice = toYouWantContinueMenu(2);
                     } while (subMenuChoice == 2);
                     break;
-                //Linked List
+                //Double Linked List
                 case 8:
                     DoublelyLinkedList doublelyLinkedList = new DoublelyLinkedList();
                     doublelyLinkedList.Add3Nodes();
+                    break;
+                //Double Linked List Operation
+                case 9:
+
+                    DoublelyLinkedListOperation doublelyLinkedListOperation = new DoublelyLinkedListOperation();
+                    do
+                    {
+                        Console.WriteLine("\n1.Insert Beginning");
+                        Console.WriteLine("2.Insert Position");
+                        Console.WriteLine("3.Insert End");
+                        Console.WriteLine("4.Delete Beginning");
+                        Console.WriteLine("5.Delete Position");
+                        Console.WriteLine("6.Delete End");
+                        Console.WriteLine("7.Traverse Linked List");
+                        Console.WriteLine("8.Reverse Traverse Linked List");
+                        Console.WriteLine("9.Sorted Linked List");
+                        optionsSubMenu = chooseOption();
+                        int elementData = 0;
+                        switch (optionsSubMenu)
+                        {
+                            case 1:
+                                Console.Write("\nEnter the data :");
+                                elementData = numberInputValidate(Console.ReadLine());
+                                doublelyLinkedListOperation.InsertBeginning(elementData);
+                                break;
+                            case 2:
+                                Console.Write("\nEnter the data :");
+                                elementData = numberInputValidate(Console.ReadLine());
+                                Console.Write("\nEnter the position :");
+                                int position = numberInputValidate(Console.ReadLine());
+                                doublelyLinkedListOperation.InsertAtPosition(elementData, position);
+                                break;
+                            case 3:
+                                Console.Write("\nEnter the data :");
+                                elementData = numberInputValidate(Console.ReadLine());
+                                doublelyLinkedListOperation.InsertEnd(elementData);
+                                break;
+                            case 4:
+                                doublelyLinkedListOperation.DeleteBeginning();
+                                break;
+                            case 5:
+                                Console.Write("\nEnter the position :");
+                                int positionDelete = numberInputValidate(Console.ReadLine());
+                                doublelyLinkedListOperation.DeletePosition(positionDelete);
+                                break;
+                            case 6:
+                                doublelyLinkedListOperation.DeleteEnd();
+                                break;
+                            case 7:
+                                doublelyLinkedListOperation.PrintLinkedList();
+                                break;
+                            case 8:
+                                doublelyLinkedListOperation.PrintLinkedListReverse();
+                                break;
+                            case 9:
+                                doublelyLinkedListOperation.SortedLinkedList();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option.");
+                                break;
+                        }
+                        subMenuChoice = toYouWantContinueMenu(2);
+                    } while (subMenuChoice == 2);
                     break;
                 default:
                     Console.WriteLine("Invalid Option.");
