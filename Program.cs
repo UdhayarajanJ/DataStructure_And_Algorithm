@@ -36,6 +36,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("11.Circular Linked List Operations");
             Console.WriteLine("12.Doublely Circular Linked List");
             Console.WriteLine("13.Doublely Circular Linked List Operations");
+            Console.WriteLine("14.Hash Table Operations");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -527,6 +528,11 @@ namespace DataStructure_And_Algorithm
                         }
                         subMenuChoice = toYouWantContinueMenu(2);
                     } while (subMenuChoice == 2);
+                    break;
+                //HashTable Operation
+                case 14:
+                    HashTableOperation hashTableOperation = new HashTableOperation();
+                    hashTableOperation.HashOperation();
                     break;
                 default:
                     Console.WriteLine("Invalid Option.");
