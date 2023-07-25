@@ -86,8 +86,9 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
 
         private void PrintNodes()
         {
+            int index = 0;
             foreach (int item in _arrayList)
-                Console.Write("[ " + item + " ]\t");
+                Console.WriteLine("[ " + item + " ]  -> [" + index++ + "]");
             Console.WriteLine("\n");
         }
 
