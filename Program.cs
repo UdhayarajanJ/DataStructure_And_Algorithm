@@ -531,7 +531,7 @@ namespace DataStructure_And_Algorithm
                     break;
                 //HashTable Operation
                 case 14:
-                    HashTableOperation hashTableOperation = new HashTableOperation();
+                    HashTableMain hashTableOperation = new HashTableMain();
                     hashTableOperation.HashOperation();
                     break;
                 default:
