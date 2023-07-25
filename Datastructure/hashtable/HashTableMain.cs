@@ -22,7 +22,8 @@ namespace DataStructure_And_Algorithm.Datastructure
             do
             {
                 Console.WriteLine("\n1.Basic Hash Table Operations.");
-                Console.WriteLine("2.Open Hashing : Collision Resolving Chaining");
+                Console.WriteLine("2.Open  Hashing : Collision Resolving Chaining");
+                Console.WriteLine("3.Close Hashing : Collision Resolving Linear Probing");
                 //Console.WriteLine("3.Display The Data");
                 //Console.WriteLine("4.Size Of The HashTable");
 
@@ -37,6 +38,10 @@ namespace DataStructure_And_Algorithm.Datastructure
                     case 2:
                         CollisionResolveChaining collisionResolveChaining = new();
                         collisionResolveChaining.HashOperation();
+                        break;
+                    case 3:
+                        LinearProbing linearProbing = new();
+                        linearProbing.HashOperation();
                         break;
                     //case 2:
                     //    Console.Write("\nEnter the key :");
