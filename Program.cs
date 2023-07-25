@@ -1,4 +1,5 @@
 ﻿using DataStructure_And_Algorithm.Datastructure;
+using DataStructure_And_Algorithm.Datastructure.heaps;
 using System;
 
 namespace DataStructure_And_Algorithm
@@ -37,6 +38,7 @@ namespace DataStructure_And_Algorithm
             Console.WriteLine("12.Doublely Circular Linked List");
             Console.WriteLine("13.Doublely Circular Linked List Operations");
             Console.WriteLine("14.Hash Table Operations");
+            Console.WriteLine("15.Heaps Operations");
         }
 
         public static int numberInputValidate(string number) => int.TryParse(number, out int result) ? result : 0;
@@ -533,6 +535,11 @@ namespace DataStructure_And_Algorithm
                 case 14:
                     HashTableMain hashTableOperation = new HashTableMain();
                     hashTableOperation.HashOperation();
+                    break;
+                //Heaps Operation
+                case 15:
+                    HeapMain heapMain = new HeapMain();
+                    heapMain.HeapOperation();
                     break;
                 default:
                     Console.WriteLine("Invalid Option.");
