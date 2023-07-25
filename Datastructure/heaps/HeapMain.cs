@@ -14,6 +14,7 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
             do
             {
                 Console.WriteLine("\n1.Max Heap Operation.");
+                Console.WriteLine("\n2.Min Heap Operation.");
 
                 Console.Write("\nEnter the option : ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -22,6 +23,10 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
                     case 1:
                         MaxHeapOperation maxHeapOperation = new();
                         maxHeapOperation.HeapOperation();
+                        break; 
+                    case 2:
+                        MinHeapOperation minHeapOperation = new();
+                        minHeapOperation.HeapOperation();
                         break;
                     //case 2:
                     //    CollisionResolveChaining collisionResolveChaining = new();
