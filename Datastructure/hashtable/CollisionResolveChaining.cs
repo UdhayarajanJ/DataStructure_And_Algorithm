@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace DataStructure_And_Algorithm.Datastructure.hashtable
 {
-    public class BasicHashTableOperation
+    /*
+     
+    Let's first understand the chaining to resolve the collision.
+
+    Suppose we have a list of key values
+
+    A = 3, 2, 9, 6, 11, 13, 7, 12 where m = 10, and h(k) = 2k+3
+
+    In this case, we cannot directly use h(k) = ki/m as h(k) = 2k+3
+
+    The index of key value 3 is:
+    index = h(3) = (2(3)+3)%10 = 9
+     
+     */
+    public class CollisionResolveChaining
     {
 
         int capacity = 10;
@@ -17,7 +31,6 @@ namespace DataStructure_And_Algorithm.Datastructure.hashtable
         void InitateArray(int capacity)
         {
             capacity = capacity > 0 ? capacity : this.capacity;
-            capacity = GetPrime(capacity);
             this.capacity = capacity;
             structureOfArray = new HashComponent[capacity];
             for (int i = 0; i < capacity; i++)
@@ -28,34 +41,8 @@ namespace DataStructure_And_Algorithm.Datastructure.hashtable
             }
         }
 
-        //Get Prime Value
-        int GetPrime(int value)
-        {
-            if (value % 2 == 0)
-                value++;
-
-            while (!CheckPrime(value))
-                value += 2;
-
-            return value;
-        }
-
-        //Check Prime Value
-        bool CheckPrime(int value)
-        {
-            if (value == 1 || value == 0)
-                return false;
-
-            for (int i = 2; i < value / 2; i++)
-            {
-                if (value % i == 0)
-                    return false;
-            }
-            return true;
-        }
-
         //Hash Function
-        int HashFunction(int key) => key % capacity;
+        int HashFunction(int key) => ((2*key)+3) % capacity;
 
         //Insert Element
         void InsertData(int key, int data)
