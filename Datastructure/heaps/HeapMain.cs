@@ -15,6 +15,7 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
             {
                 Console.WriteLine("\n1.Max Heap Operation.");
                 Console.WriteLine("\n2.Min Heap Operation.");
+                Console.WriteLine("\n3.Fibonacci Heap Operation.");
 
                 Console.Write("\nEnter the option : ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -27,6 +28,10 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
                     case 2:
                         MinHeapOperation minHeapOperation = new();
                         minHeapOperation.HeapOperation();
+                        break;
+                    case 3:
+                        FibonacciHeaps fibonacciHeaps = new();
+                        fibonacciHeaps.HeapOperation();
                         break;
                     //case 2:
                     //    CollisionResolveChaining collisionResolveChaining = new();
