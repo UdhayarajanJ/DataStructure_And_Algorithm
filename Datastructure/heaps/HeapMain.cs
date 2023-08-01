@@ -30,7 +30,7 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
                         minHeapOperation.HeapOperation();
                         break;
                     case 3:
-                        FibonacciHeaps fibonacciHeaps = new();
+                        FibonacciHeapOperations fibonacciHeaps = new();
                         fibonacciHeaps.HeapOperation();
                         break;
                     //case 2:
