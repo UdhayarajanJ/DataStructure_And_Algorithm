@@ -19,6 +19,7 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
     public class FibonacciHeapOperations
     {
         private Nodes minimumNode { get; set; }
+        private Nodes foundNode { get; set; }
         private int numberOfNodes { get; set; }
 
         public FibonacciHeapOperations()
@@ -66,14 +67,17 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
             if (tempMinimumNode != null)
             {
                 Nodes minimumNodeChild = tempMinimumNode.child;
-                if (minimumNode.child != null)
+                Nodes childNextNode = minimumNodeChild;
+                Nodes checkMinimumNode = minimumNodeChild;
+                if (minimumNodeChild != null)
                 {
-                    do
+                    do          
                     {
-                        minimumNodeChild.parent = null;
+                        childNextNode = minimumNodeChild.next;
                         InsertNode(minimumNodeChild);
-                        minimumNodeChild = minimumNodeChild.next;
-                    } while (minimumNodeChild != null && minimumNodeChild.child != minimumNodeChild);
+                        minimumNodeChild.parent = null;
+                        minimumNodeChild = childNextNode;
+                    } while (minimumNodeChild != null && minimumNodeChild != checkMinimumNode);
                 }
 
                 tempMinimumNode.prev.next = tempMinimumNode.next;
@@ -200,8 +204,97 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
             }
         }
 
+        private Nodes FindNode(int findKeyValue)
+        {
+            foundNode = null;
+            FindNode(findKeyValue, minimumNode);
+            return foundNode;
+        }
+
+        private void FindNode(int keyValue, Nodes nodeValue)
+        {
+            if (foundNode != null || nodeValue == null)
+                return;
+            else
+            {
+                Nodes tempNode = nodeValue;
+                do
+                {
+                    if (keyValue == tempNode.key)
+                        foundNode = tempNode;
+                    else
+                    {
+                        Nodes childNode = tempNode.child;
+                        FindNode(keyValue, childNode);
+                        tempNode = tempNode.next;
+                    }
+                } while (tempNode != nodeValue && foundNode == null);
+            }
+        }
+
+        private void DecreaseKey(int oldKeyValue,int newKeyValue)
+        {
+            Nodes foundedNode = FindNode(oldKeyValue);
+            DecreaseKey(foundedNode, newKeyValue);
+        }
+
+        private void DecreaseKey(Nodes foundedNode, int newKeyValue)
+        {
+            if (newKeyValue > foundedNode.key)
+                return;
+
+            foundedNode.key = newKeyValue;
+            Nodes parent = foundedNode.parent;
+
+            if(parent!=null && foundedNode.key < parent.key)
+            {
+                Cut(foundedNode, parent);
+                CascadingCut(parent);
+            }
+
+            if (foundedNode.key < minimumNode.key)
+                minimumNode = foundedNode;
+        }
+
+        private void Cut(Nodes foundedNode,Nodes parentNode)
+        {
+            foundedNode.prev.next = foundedNode.next;
+            foundedNode.next.prev = foundedNode.prev;
+
+            parentNode.degree -= 1;
+            
+            foundedNode.prev = null;
+            foundedNode.next = null;
+            foundedNode.parent = null;
+            InsertNode(foundedNode);
+            foundedNode.isMarked = false;
+        }
+
+        private void CascadingCut(Nodes parentNode)
+        {
+            Nodes topLevelParent = parentNode.parent;
+            if (topLevelParent != null)
+            {
+                if (topLevelParent.isMarked == false)
+                    topLevelParent.isMarked = true;
+                else
+                {
+                    Cut(parentNode, topLevelParent);
+                    CascadingCut(topLevelParent);
+                }
+            }
+        }
+
+        private void DeleteNode(int keyValue)
+        {
+            Nodes foundNode = FindNode(keyValue);
+            DecreaseKey(foundNode, int.MinValue);
+            int extractMinValue = ExtractMin();
+        }
+
         public void HeapOperation()
         {
+            //Part - 1
             InsertNode(34);
             InsertNode(3);
             InsertNode(200);
@@ -209,9 +302,24 @@ namespace DataStructure_And_Algorithm.Datastructure.heaps
             InsertNode(4);
             InsertNode(123);
             InsertNode(2);
+            InsertNode(134);
+            InsertNode(13);
+            InsertNode(1200);
+            InsertNode(110);
+            InsertNode(14);
+            InsertNode(1123);
+            InsertNode(12);
+            Console.WriteLine("\n Display All Rooted Value:\n");
             Display();
-            Console.WriteLine(ExtractMin());
+            Console.WriteLine("\n Extracted Min Value : {0}\n",ExtractMin());
             Display();
+            DecreaseKey(14, 11);
+            Console.WriteLine("\n After Decrease Key :\n");
+            Display();
+            DeleteNode(11);
+            Console.WriteLine("\n After Delete Node :\n");
+            Display();
+            //Console.WriteLine("\n Extracted Min Value : {0}\n", ExtractMin());
         }
     }
 }
