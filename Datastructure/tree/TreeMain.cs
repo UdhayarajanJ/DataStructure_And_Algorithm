@@ -19,7 +19,8 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                 Console.WriteLine("\n4.Perfect Binary Tree");
                 Console.WriteLine("\n5.Completely Binary Tree");
                 Console.WriteLine("\n6.Balanced Binary Tree");
-               
+                Console.WriteLine("\n7.Binary Search Tree");
+
 
                 Console.Write("\nEnter the option : ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -32,7 +33,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     case 2:
                         BinaryTree binaryTree = new();
                         binaryTree.BinaryTreeOperations();
-                        break;  
+                        break;
                     case 3:
                         FullBinaryTree fullBinaryTree = new();
                         fullBinaryTree.FullBinaryTreeOperations();
@@ -48,6 +49,10 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     case 6:
                         BalancedBinaryTree balancedBinaryTree = new();
                         balancedBinaryTree.BalancedBinaryTreeOperations();
+                        break;
+                    case 7:
+                        BSTOperations bSTOperations = new();
+                        bSTOperations.BinarySearchTreeOperations();
                         break;
                     //case 2:
                     //    MinHeapOperation minHeapOperation = new();
