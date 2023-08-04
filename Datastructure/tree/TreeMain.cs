@@ -14,6 +14,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
             do
             {
                 Console.WriteLine("\n1.Tree Traversal");
+                Console.WriteLine("\n2.Binary Tree Traversal");
                
 
                 Console.Write("\nEnter the option : ");
@@ -23,6 +24,10 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     case 1:
                         TreeTraversal treeTraversal = new();
                         treeTraversal.TreeTraversalMain();
+                        break;
+                    case 2:
+                        BinaryTree binaryTree = new();
+                        binaryTree.BinaryTreeOperations();
                         break;
                     //case 2:
                     //    MinHeapOperation minHeapOperation = new();
