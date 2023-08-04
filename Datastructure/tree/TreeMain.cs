@@ -15,6 +15,8 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
             {
                 Console.WriteLine("\n1.Tree Traversal");
                 Console.WriteLine("\n2.Binary Tree Traversal");
+                Console.WriteLine("\n3.Full Binary Tree Traversal");
+                Console.WriteLine("\n4.Perfect Binary Tree Traversal");
                
 
                 Console.Write("\nEnter the option : ");
@@ -28,6 +30,14 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     case 2:
                         BinaryTree binaryTree = new();
                         binaryTree.BinaryTreeOperations();
+                        break;  
+                    case 3:
+                        FullBinaryTree fullBinaryTree = new();
+                        fullBinaryTree.FullBinaryTreeOperations();
+                        break;
+                    case 4:
+                        PerfectBinaryTree perfectBinaryTree = new();
+                        perfectBinaryTree.PerfectBinaryTreeOperations();
                         break;
                     //case 2:
                     //    MinHeapOperation minHeapOperation = new();
