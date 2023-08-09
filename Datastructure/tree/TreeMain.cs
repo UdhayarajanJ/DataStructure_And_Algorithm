@@ -20,6 +20,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                 Console.WriteLine("\n5.Completely Binary Tree");
                 Console.WriteLine("\n6.Balanced Binary Tree");
                 Console.WriteLine("\n7.Binary Search Tree");
+                Console.WriteLine("\n8.AVL Tree");
 
 
                 Console.Write("\nEnter the option : ");
@@ -53,6 +54,10 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     case 7:
                         BSTOperations bSTOperations = new();
                         bSTOperations.BinarySearchTreeOperations();
+                        break; 
+                    case 8:
+                        AVLTree aVLTree = new();
+                        aVLTree.AVLTreeOperations();
                         break;
                     //case 2:
                     //    MinHeapOperation minHeapOperation = new();
