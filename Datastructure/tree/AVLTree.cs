@@ -36,7 +36,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
 
         int MaximumHeight(int leftValue, int rightValue) => leftValue > rightValue ? leftValue : rightValue;
 
-        // Get balance factor of a node
+        // Get Balance factor of node N
         int GetBalanceFactor(AVLTreeNode node)
         {
             if (node == null)
@@ -75,6 +75,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
         // Insert a node
         AVLTreeNode InsertNode(AVLTreeNode root, int value)
         {
+            /* 1. Perform the normal BST insertion */
             if (root == null)
                 return new AVLTreeNode(value);
 
@@ -83,38 +84,67 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
             else if (value > root.value)
                 root.rightNode = InsertNode(root.rightNode, value);
             else
-                return root;
+                return root; // Duplicate keys not allowed
 
-            // Update the balance factor of each node
-            // And, balance the tree
+            /* 2. Update height of this ancestor node */
 
             root.height = 1 + MaximumHeight(Height(root.leftNode), Height(root.rightNode));
+
+            /* 3. Get the balance factor of this ancestor
+            node to check whether this node became
+            unbalanced */
+
             int balance = GetBalanceFactor(root);
 
-            if (balance > 1)
+            // If this node becomes unbalanced, then there
+            // are 4 cases Left Left Case
+
+            if (balance > 1 && value < root.leftNode.value)
+                return RightRotate(root);
+
+            // Right Right Case
+            if (balance < -1 && value > root.rightNode.value)
+                return LeftRotate(root);
+
+            // Left Right Case
+            if (balance > 1 && value > root.leftNode.value)
             {
-                if (value < root.leftNode.value)
-                    return RightRotate(root);
-                else if (value > root.leftNode.value)
-                {
-                    root.leftNode = LeftRotate(root.leftNode);
-                    return RightRotate(root);
-                }
+                root.leftNode = LeftRotate(root.leftNode);
+                return RightRotate(root);
             }
 
-
-            if (balance < -1)
+            // Right Left Case
+            if (balance < -1 && value < root.rightNode.value)
             {
-                if (value > root.rightNode.value)
-                    return LeftRotate(root);
-                else if (value < root.rightNode.value)
-                {
-                    root.rightNode = RightRotate(root.rightNode);
-                    return RightRotate(root);
-                }
+                root.rightNode = RightRotate(root.rightNode);
+                return LeftRotate(root);
             }
-
             return root;
+
+            //if (balance > 1)
+            //{
+            //    if (value < root.leftNode.value)
+            //        return RightRotate(root);
+            //    else if (value > root.leftNode.value)
+            //    {
+            //        root.leftNode = LeftRotate(root.leftNode);
+            //        return RightRotate(root);
+            //    }
+            //}
+
+
+            //if (balance < -1)
+            //{
+            //    if (value > root.rightNode.value)
+            //        return LeftRotate(root);
+            //    else if (value < root.rightNode.value)
+            //    {
+            //        root.rightNode = RightRotate(root.rightNode);
+            //        return RightRotate(root);
+            //    }
+            //}
+
+            //return root;
         }
 
 
@@ -128,15 +158,25 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
 
         AVLTreeNode DeleteNode(AVLTreeNode root, int value)
         {
+            // STEP 1: PERFORM STANDARD BST DELETE
             if (root == null)
                 return root;
 
+            // If the key to be deleted is smaller than
+            // the root's key, then it lies in left subtree
             if (value < root.value)
                 root.leftNode = DeleteNode(root.leftNode, value);
+
+            // If the key to be deleted is greater than the
+            // root's key, then it lies in right subtree
             else if (value > root.value)
                 root.rightNode = DeleteNode(root.rightNode, value);
+
+            // if key is same as root's key, then this is the node
+            // to be deleted
             else
             {
+                // node with only one child or no child
                 if ((root.leftNode == null) || (root.rightNode == null))
                 {
                     AVLTreeNode tempNode = null;
@@ -145,54 +185,67 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     else
                         tempNode = root.leftNode;
 
+                    // No child case
                     if (tempNode == null)
                     {
                         tempNode = root;
                         root = null;
                     }
-                    else
-                        root = tempNode;
+                    else // One child case
+                        root = tempNode; // Copy the contents of the non-empty child
                 }
                 else
                 {
+                    // node with two children: Get the inorder
+                    // successor (smallest in the right subtree)
+
                     AVLTreeNode tempRightNode = NodeWithMinimumValue(root.rightNode);
+
+                    // Copy the inorder successor's data to this node
                     root.value = tempRightNode.value;
+
+                    // Delete the inorder successor
                     root.rightNode = DeleteNode(root.rightNode, tempRightNode.value);
                 }
-
-                if (root == null)
-                    return root;
             }
 
-            // Update the balance factor of each node
-            // And, balance the tree
+            // If the tree had only one node then return
+            if (root == null)
+                return root;
+
+            // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
 
             root.height = 1 + MaximumHeight(Height(root.leftNode), Height(root.rightNode));
+
+            // STEP 3: GET THE BALANCE FACTOR
+            // OF THIS NODE (to check whether
+            // this node became unbalanced)
+
             int balance = GetBalanceFactor(root);
 
-            if (balance > 1)
+            // If this node becomes unbalanced, then there
+            // are 4 cases Left Left Case
+
+            if (balance > 1 && value < root.leftNode.value)
+                return RightRotate(root);
+
+            // Right Right Case
+            if (balance < -1 && value > root.rightNode.value)
+                return LeftRotate(root);
+
+            // Left Right Case
+            if (balance > 1 && value > root.leftNode.value)
             {
-                if (GetBalanceFactor(root) >= 0)
-                    return RightRotate(root);
-                else if (value > root.leftNode.value)
-                {
-                    root.leftNode = LeftRotate(root.leftNode);
-                    return RightRotate(root);
-                }
+                root.leftNode = LeftRotate(root.leftNode);
+                return RightRotate(root);
             }
 
-
-            if (balance < -1)
+            // Right Left Case
+            if (balance < -1 && value < root.rightNode.value)
             {
-                if (GetBalanceFactor(root) <= 0)
-                    return LeftRotate(root);
-                else if (value < root.rightNode.value)
-                {
-                    root.rightNode = RightRotate(root.rightNode);
-                    return RightRotate(root);
-                }
+                root.rightNode = RightRotate(root.rightNode);
+                return LeftRotate(root);
             }
-
             return root;
         }
 
@@ -241,7 +294,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
             tree.printTree(tree._rootNode, "", true);
             tree._rootNode = tree.DeleteNode(tree._rootNode, 13);
             Console.WriteLine("After Deletion: ");
-            tree.printTree(tree._rootNode, "", true);
+            tree.preOrder(tree._rootNode);
         }
     }
 }
