@@ -56,7 +56,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                         bSTOperations.BinarySearchTreeOperations();
                         break; 
                     case 8:
-                        AVLTree aVLTree = new();
+                        AVLTreeNew aVLTree = new();
                         aVLTree.AVLTreeOperations();
                         break;
                     //case 2:
