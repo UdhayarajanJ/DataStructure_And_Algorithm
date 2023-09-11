@@ -61,7 +61,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                         aVLTree.AVLTreeOperations();
                         break;  
                     case 9:
-                        BTree_1 bTree_1 = new();
+                        BTree_1 bTree_1 = new(3);
                         bTree_1.BTreeOperation_1();
                         break;
                     //case 2:
