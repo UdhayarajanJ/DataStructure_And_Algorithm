@@ -21,6 +21,7 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                 Console.WriteLine("\n6.Balanced Binary Tree");
                 Console.WriteLine("\n7.Binary Search Tree");
                 Console.WriteLine("\n8.AVL Tree");
+                Console.WriteLine("\n9.B-Tree");
 
 
                 Console.Write("\nEnter the option : ");
@@ -58,6 +59,10 @@ namespace DataStructure_And_Algorithm.Datastructure.tree
                     case 8:
                         AVLTreeNew aVLTree = new();
                         aVLTree.AVLTreeOperations();
+                        break;  
+                    case 9:
+                        BTree_1 bTree_1 = new();
+                        bTree_1.BTreeOperation_1();
                         break;
                     //case 2:
                     //    MinHeapOperation minHeapOperation = new();
