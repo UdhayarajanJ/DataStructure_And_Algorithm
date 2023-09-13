@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructure_And_Algorithm.Datastructure.tree
 {
-    class AVLTreeNode
+   internal class AVLTreeNode
     {
         public int height;
         public int value;
